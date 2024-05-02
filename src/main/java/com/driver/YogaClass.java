@@ -45,6 +45,10 @@ public class YogaClass {
 
     public void enrollStudent(Student student) {
     	//your code goes here
-        enrolledStudents.add(student);
+        if(enrolledStudents.size() < maxCapacity) {
+            enrolledStudents.add(student);
+        }else{
+            throw new RuntimeException("Class is already full. Cannot enroll more students.");
+        }
     }
 }

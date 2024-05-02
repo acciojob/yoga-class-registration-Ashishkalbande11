@@ -64,7 +64,7 @@ public class YogaClassRegistrationController {
         System.out.println("Enter class code:");
         String classCode = scanner.next();
         System.out.println("Enter instructor name:");
-        String instructor = scanner.next();
+        String instructor = scanner.nextLine();
         System.out.println("Enter max capacity:");
         int maxCapacity = scanner.nextInt();
         System.out.println("Enter form type:");

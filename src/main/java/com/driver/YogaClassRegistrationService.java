@@ -1,5 +1,7 @@
 package com.driver;
 
+import org.w3c.dom.ls.LSException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,32 +16,44 @@ public class YogaClassRegistrationService {
     public void registerStudent(StudentDTO studentDTO, YogaClassDTO yogaClassDTO) {
     	//your code goes here
         YogaClass yogaClass = yogaClasses.get(yogaClassDTO.getClassCode());
-        if(yogaClass != null){
-            Student student = new Student(studentDTO.getStudentName(), studentDTO.getEmail());
+        if(yogaClass == null){
+            System.out.println("Class does not exist");
+            return;
+        }
+        Student student = new Student(studentDTO.getStudentName(), studentDTO.getEmail());
+        try{
             yogaClass.enrollStudent(student);
-            System.out.println("Registration successful for "+student.getStudentName()+" in "+ yogaClass.getFormType()+" class!");
-        }else{
-            System.out.println("Invalid class code.");
+            System.out.println("Student "+student.getStudentName()+ " successfully enrolled "+ yogaClass.getClassCode());
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
         }
     }
 
     public void addYogaClass(YogaClassDTO yogaClassDTO) {
     	//your code goes here
-        YogaClass yogaClass = new YogaClass(yogaClassDTO.getClassCode(), yogaClassDTO.getInstructor(), yogaClassDTO.getMaxCapacity(), yogaClassDTO.getFormType());
+        YogaClass yogaClass = new YogaClass(
+                yogaClassDTO.getClassCode(),
+                yogaClassDTO.getInstructor(),
+                yogaClassDTO.getMaxCapacity(),
+                yogaClassDTO.getFormType()
+        );
         yogaClasses.put(yogaClassDTO.getClassCode(), yogaClass);
-        System.out.println("Yoga class added successfully.");
+        System.out.println("Yoga class "+ yogaClass.getClassCode() + " added successfully.");
     }
 
     public void displayEnrolledStudents(String classCode) {
         //your code goes here
         YogaClass yogaClass = yogaClasses.get(classCode);
-        if(yogaClass != null){
-            System.out.println("Enrolled students in "+yogaClass.getFormType()+" - " + "class:");
-            for(Student student : yogaClass.getEnrolledStudents()){
-                System.out.println(student.getStudentName()+" - "+ student.getEmail());
-            }
+        if(yogaClass == null){
+            System.out.println("Invaild class code. Class not found");
+            return;
+        }
+        List<Student> studentList = yogaClass.getEnrolledStudents();
+        if(studentList.isEmpty()){
+            System.out.println("No students enrolled in class "+ classCode);
         }else{
-            System.out.println("Invalid class code.");
+            System.out.println("Enrolled student in class "+ classCode+":");
+            studentList.forEach(student -> System.out.println(student.getStudentName()));
         }
     }
 }
