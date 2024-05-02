@@ -48,13 +48,15 @@ public class YogaClassRegistrationController {
     private void registerStudent(Scanner scanner) {
     	//your code goes here
         System.out.println("Enter student name:");
-        String studentName = scanner.next();
+        String studentName = scanner.nextLine();
         System.out.println("Enter student email:");
         String email = scanner.next();
-        StudentDTO studentDTO = new StudentDTO(studentName, email);
+
 
         System.out.println("Enter class code:");
         String classCode = scanner.next();
+        StudentDTO studentDTO = new StudentDTO(studentName, email);
+
         YogaClassDTO yogaClassDTO = new YogaClassDTO(classCode,"",0,"");
         registrationService.registerStudent(studentDTO,yogaClassDTO);
     }
