@@ -45,5 +45,6 @@ public class YogaClass {
 
     public void enrollStudent(Student student) {
     	//your code goes here
+        enrolledStudents.add(student);
     }
 }
