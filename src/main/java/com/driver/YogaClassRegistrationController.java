@@ -38,23 +38,26 @@ public class YogaClassRegistrationController {
 
     private void printMenu() {
     	//your code goes here
-        System.out.println("1. Register student for a yoga class");
-        System.out.println("2. Add a new yoga class");
-        System.out.println("3. Display enrolled students for a yoga class");
+        System.out.println("1. Register Student for Yoga Class");
+        System.out.println("2. Add New Yoga Class");
+        System.out.println("3. Display Enrolled Students in a Yoga Class");
         System.out.println("4. Exit");
-        System.out.println("5. Enter your choice");
+//        System.out.println("5. Enter your choice");
     }
 
     private void registerStudent(Scanner scanner) {
     	//your code goes here
-        System.out.println("Enter student name:");
+        System.out.println("Enter Student Name:");
+        scanner.nextLine();
         String studentName = scanner.nextLine();
-        System.out.println("Enter student email:");
+
+        System.out.println("Enter Student Email:");
         String email = scanner.next();
 
 
-        System.out.println("Enter class code:");
+        System.out.println("Enter Yoga Class Code:");
         String classCode = scanner.next();
+
         StudentDTO studentDTO = new StudentDTO(studentName, email);
 
         YogaClassDTO yogaClassDTO = new YogaClassDTO(classCode,"",0,"");
@@ -63,13 +66,17 @@ public class YogaClassRegistrationController {
 
     private void addYogaClass(Scanner scanner) {
     	//your code goes here
-        System.out.println("Enter class code:");
+        System.out.println("Enter Yoga Class Code:");
+        scanner.nextLine();
         String classCode = scanner.next();
-        System.out.println("Enter instructor name:");
+
+        System.out.println("Enter Instructor Name:");
         String instructor = scanner.nextLine();
-        System.out.println("Enter max capacity:");
+
+        System.out.println("Enter Max Capacity:");
         int maxCapacity = scanner.nextInt();
-        System.out.println("Enter form type:");
+
+        System.out.println("Enter Form Type:");
         String formType = scanner.next();
 
         YogaClassDTO yogaClassDTO = new YogaClassDTO(classCode, instructor,maxCapacity,formType);
@@ -78,7 +85,7 @@ public class YogaClassRegistrationController {
 
     private void displayEnrolledStudents(Scanner scanner) {
     	//your code goes here
-        System.out.println("Enter the class code:");
+        System.out.println("Enter Yoga Class Code:");
         String classCode = scanner.next();
         registrationService.displayEnrolledStudents(classCode);
     }

@@ -17,7 +17,7 @@ public class YogaClassRegistrationService {
     	//your code goes here
         YogaClass yogaClass = yogaClasses.get(yogaClassDTO.getClassCode());
         if(yogaClass == null){
-            System.out.println("Class does not exist");
+            System.out.println("Class not found. First Add New Yoga Class");
             return;
         }
         Student student = new Student(studentDTO.getStudentName(), studentDTO.getEmail());
