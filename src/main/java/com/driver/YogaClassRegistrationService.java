@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class YogaClassRegistrationService {
-    private Map<String, YogaClass> yogaClasses;
+    private final Map<String, YogaClass> yogaClasses;
 
     public YogaClassRegistrationService() {
         this.yogaClasses = new HashMap<>();

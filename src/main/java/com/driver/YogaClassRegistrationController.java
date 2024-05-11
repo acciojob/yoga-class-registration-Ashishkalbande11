@@ -3,7 +3,7 @@ package com.driver;
 import java.util.Scanner;
 
 public class YogaClassRegistrationController {
-    private YogaClassRegistrationService registrationService;
+    private final YogaClassRegistrationService registrationService;
 
     public YogaClassRegistrationController(YogaClassRegistrationService registrationService) {
         this.registrationService = registrationService;
@@ -38,6 +38,7 @@ public class YogaClassRegistrationController {
 
     private void printMenu() {
     	//your code goes here
+        System.out.println("Choose an Option:");
         System.out.println("1. Register Student for Yoga Class");
         System.out.println("2. Add New Yoga Class");
         System.out.println("3. Display Enrolled Students in a Yoga Class");
