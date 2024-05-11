@@ -16,6 +16,7 @@ public class YogaClassRegistrationService {
     public void registerStudent(StudentDTO studentDTO, YogaClassDTO yogaClassDTO) {
     	//your code goes here
         YogaClass yogaClass = yogaClasses.get(yogaClassDTO.getClassCode());
+
         if(yogaClass == null){
             System.out.println("Class not found. First Add New Yoga Class");
             return;
@@ -37,7 +38,7 @@ public class YogaClassRegistrationService {
                 yogaClassDTO.getMaxCapacity(),
                 yogaClassDTO.getFormType()
         );
-        yogaClasses.put(yogaClassDTO.getClassCode(), yogaClass);
+        yogaClasses.put(yogaClass.getClassCode(), yogaClass);
         System.out.println("Class "+ yogaClass.getClassCode() + " added successfully.");
     }
 
