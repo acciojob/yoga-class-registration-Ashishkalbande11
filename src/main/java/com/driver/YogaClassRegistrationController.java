@@ -68,7 +68,7 @@ public class YogaClassRegistrationController {
     	//your code goes here
         System.out.println("Enter Yoga Class Code:");
         scanner.nextLine();
-        String classCode = scanner.next();
+        String classCode = scanner.nextLine();
 
         System.out.println("Enter Instructor Name:");
         String instructor = scanner.nextLine();

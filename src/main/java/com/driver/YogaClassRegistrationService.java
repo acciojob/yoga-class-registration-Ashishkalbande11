@@ -23,7 +23,7 @@ public class YogaClassRegistrationService {
         Student student = new Student(studentDTO.getStudentName(), studentDTO.getEmail());
         try{
             yogaClass.enrollStudent(student);
-            System.out.println("Student "+student.getStudentName()+ " successfully enrolled "+ yogaClass.getClassCode());
+            System.out.println("Student "+student.getStudentName()+ " successfully enrolled in class "+ yogaClass.getClassCode());
         }catch (RuntimeException e){
             System.out.println(e.getMessage());
         }
@@ -38,14 +38,14 @@ public class YogaClassRegistrationService {
                 yogaClassDTO.getFormType()
         );
         yogaClasses.put(yogaClassDTO.getClassCode(), yogaClass);
-        System.out.println("Yoga class "+ yogaClass.getClassCode() + " added successfully.");
+        System.out.println("Class "+ yogaClass.getClassCode() + " added successfully.");
     }
 
     public void displayEnrolledStudents(String classCode) {
         //your code goes here
         YogaClass yogaClass = yogaClasses.get(classCode);
         if(yogaClass == null){
-            System.out.println("Invaild class code. Class not found");
+            System.out.println("Invalid class code. Class not found.");
             return;
         }
         List<Student> studentList = yogaClass.getEnrolledStudents();
